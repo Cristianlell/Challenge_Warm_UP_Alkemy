@@ -43,9 +43,13 @@ module.exports={
                 messages : messages.OK,
                 data: await post
             }
-             res.status(200).json(data)
+             if (data.data == null) {
+                throw new Error()
+             } else { 
+                 res.status(200).json(data)
+             }   
+            
         } catch (error) {
-            console.log(error);
             res.status(400).json(messages.BAD_REQUEST)            
         }
     },
@@ -95,7 +99,20 @@ module.exports={
 
 
     },
-    // delete: async (req,res)=>{
-        
-    // },
+    delete: async (req,res)=>{
+
+        let id = req.params.id
+
+        try {
+            
+            postsServices.deletePost(id)
+            res.status(200).json(messages.OK)
+
+        } catch (error) {
+
+            console.log(error);
+            res.status(400).json(messages.BAD_REQUEST)
+            
+        }    
+    },
 }

@@ -70,7 +70,9 @@ module.exports={
     deletePost: async (id)=>{
         try {
             
-            await db.Post.delete(id)
+            await db.Post.destroy({
+                where: { id: +id },
+            })
 
         } catch (error) {
             throw Error(error)

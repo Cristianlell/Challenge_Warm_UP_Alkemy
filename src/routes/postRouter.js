@@ -6,13 +6,12 @@ const postUpdateValidation = require('../validations/postUpdateValidation');
 const postValidation = require('../validations/postValidation');
 
 router.get('/', postController.list);
-
 router.get('/:id', postController.detail);
 
 router.post('/', postValidation,postController.create);
 
 router.patch('/:id',postUpdateValidation, postController.update);
 
-// router.delete('/:id', postController.delete);
+router.delete('/:id', postController.delete);
 
 module.exports = router;
