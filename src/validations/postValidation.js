@@ -35,4 +35,17 @@ module.exports = [
         
         return true
     }),
+
+    body("title")
+    .notEmpty().withMessage("Requerido").bail()
+    .isLength({min:2,max : 255}).withMessage("Mínimo 2 maximo 255"),
+
+    body("category_id")
+    .notEmpty().withMessage("Requerido").bail()
+    .isInt().withMessage("Debe ser un Número del 1 al 3"),
+
+    body("content")
+    .notEmpty().withMessage("Requerido").bail()
+    .isLength({min:50,max : 500}).withMessage("Mínimo 50 maximo 500"),
+
 ]
